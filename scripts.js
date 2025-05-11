@@ -2,6 +2,7 @@ const button = document.getElementById('button-1')
 const select = document.getElementById('moeda')
 const dolar = 5.2
 const euro = 5.9
+const bitcoin = 581494.51
 const convertValues = () => {
 const input = document.getElementById('input-real').value
 const valorR = document.getElementById('valor-real')
@@ -27,8 +28,16 @@ ValorD.innerHTML = new Intl.NumberFormat("de-DE" , {
 
 }
 
-
+if(select.value ==="Bitcoin"){
+    ValorD.innerHTML = new Intl.NumberFormat("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 8
+  }).format(input / bitcoin);
 }
+}
+
+
+
 button.addEventListener('click' , convertValues )
 
 
@@ -39,8 +48,13 @@ const novovalor = () => {
       txtDolar.innerHTML = "Euro"
       img.src = "./assets/euro.png"
     }
-    else {txtDolar.innerHTML = "Dólar"
+    else if (select.value == "dolar")
+         {txtDolar.innerHTML = "Dólar"
         img.src = "./assets/eua.png"
+    }
+    else if(select.value == "Bitcoin"){
+        txtDolar.innerHTML = "Bitcoin"
+        img.src = "./assets/bitcoin.png"
     }
     
         
